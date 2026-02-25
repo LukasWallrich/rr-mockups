@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Replication Research (R²) — Science-Forward</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Custom Properties ─────────────────────────────── */
+    :root {
+      --color-bg: #FFFFFF;
+      --color-grid: #E8F0FE;
+      --color-text: #1E293B;
+      --color-text-secondary: #64748B;
+      --color-indigo: #4F46E5;
+      --color-indigo-light: rgba(79, 70, 229, 0.08);
+      --color-cyan: #06B6D4;
+      --color-amber: #F59E0B;
+      --color-green: #10B981;
+      --color-code-bg: #F1F5F9;
+      --color-chart: #6366F1;
+      --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+      --font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+      --max-width: 1200px;
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --space-4xl: 5rem;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-pill: 999px;
+    }
+
+    /* ── Reset & Base ──────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(var(--color-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+      background-size: 20px 20px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--color-indigo); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    /* ── Header ────────────────────────────────────────── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--color-indigo);
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .header-brand .logo-r2 {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-indigo);
+      letter-spacing: -0.02em;
+    }
+
+    .header-brand .logo-full {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      letter-spacing: 0.01em;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      list-style: none;
+    }
+
+    .header-nav a {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      transition: color 0.2s;
+    }
+
+    .header-nav a:hover {
+      color: var(--color-indigo);
+      text-decoration: none;
+    }
+
+    /* ── Hero Section ──────────────────────────────────── */
+    .hero {
+      padding: var(--space-4xl) 0 var(--space-3xl);
+    }
+
+    .hero-abstract {
+      max-width: 800px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-indigo);
+      background: var(--color-indigo-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-title {
+      font-family: var(--font-sans);
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-text);
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-description {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+      border-left: 3px solid var(--color-indigo);
+      padding-left: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .data-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .data-card {
+      background: var(--color-code-bg);
+      border-left: 3px solid var(--color-indigo);
+      padding: var(--space-lg);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .data-card-value {
+      font-family: var(--font-mono);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+    }
+
+    .data-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    /* ── Section Utilities ─────────────────────────────── */
+    .section {
+      padding: var(--space-3xl) 0;
+    }
+
+    .section-heading {
+      font-family: var(--font-sans);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .section-subheading {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2xl);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Feature Panels ────────────────────────────────── */
+    .feature-panels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .feature-panel {
+      background: var(--color-bg);
+      border: 1px solid var(--color-grid);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .feature-panel:hover {
+      box-shadow: 0 4px 20px rgba(79, 70, 229, 0.08);
+      border-color: rgba(79, 70, 229, 0.2);
+    }
+
+    .feature-indicator {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+
+    .feature-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .feature-dot--green { background: var(--color-green); }
+    .feature-dot--indigo { background: var(--color-indigo); }
+    .feature-dot--amber { background: var(--color-amber); }
+
+    .feature-status {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-secondary);
+    }
+
+    .feature-panel h3 {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: var(--space-sm);
+    }
+
+    .feature-panel p {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .feature-viz {
+      margin-top: var(--space-lg);
+      height: 24px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    /* Viz variant: horizontal bar */
+    .feature-viz--bar {
+      background: var(--color-code-bg);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      gap: 0;
+    }
+
+    .feature-viz--bar .bar-fill {
+      height: 100%;
+      border-radius: var(--radius-sm);
+      transition: width 0.6s ease;
+    }
+
+    /* Viz variant: progress dots */
+    .feature-viz--dots {
+      gap: 4px;
+    }
+
+    .feature-viz--dots .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-grid);
+    }
+
+    .feature-viz--dots .dot.filled {
+      background: var(--color-indigo);
+    }
+
+    /* Viz variant: segmented bar */
+    .feature-viz--segments {
+      gap: 2px;
+    }
+
+    .feature-viz--segments .segment {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--color-grid);
+    }
+
+    .feature-viz--segments .segment.filled {
+      background: var(--color-amber);
+    }
+
+    /* ── Timeline / Articles ───────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      background: var(--color-grid);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: var(--space-xl);
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -29px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-indigo);
+      border: 2px solid var(--color-bg);
+      box-shadow: 0 0 0 2px var(--color-indigo);
+    }
+
+    .timeline-item-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .timeline-item-title a {
+      color: var(--color-indigo);
+      transition: color 0.2s;
+    }
+
+    .timeline-item-title a:hover {
+      color: var(--color-chart);
+    }
+
+    .timeline-item-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .timeline-item-discipline {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-indigo);
+      background: var(--color-indigo-light);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-pill);
+      margin-top: 0.4rem;
+    }
+
+    /* ── Disciplines Network ───────────────────────────── */
+    .disciplines-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-md);
+      position: relative;
+    }
+
+    .discipline-node {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-text);
+      background: var(--color-bg);
+      border: 1px solid var(--color-grid);
+      border-radius: var(--radius-pill);
+      padding: 0.6rem 1rem;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .discipline-node:hover {
+      border-color: var(--color-indigo);
+      box-shadow: 0 2px 12px rgba(79, 70, 229, 0.1);
+      background: var(--color-indigo-light);
+    }
+
+    /* Network connector lines (desktop) */
+    .discipline-connectors {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .discipline-connectors line {
+      stroke: var(--color-grid);
+      stroke-width: 1;
+    }
+
+    .disciplines-grid .discipline-node {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Stats Section ─────────────────────────────────── */
+    .stats-section {
+      background: var(--color-indigo);
+      color: #FFFFFF;
+      padding: var(--space-3xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-2xl);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      opacity: 0.85;
+      margin-top: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+
+    .stat-bar {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      overflow: hidden;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      width: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #FFFFFF, var(--color-cyan));
+    }
+
+    /* ── Partners & Editors ────────────────────────────── */
+    .partners-editors {
+      padding: var(--space-3xl) 0;
+    }
+
+    .partners-editors-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+    }
+
+    .pe-heading {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: var(--space-lg);
+    }
+
+    .partner-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .partner-badge {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--color-text);
+      background: var(--color-code-bg);
+      border: 1px solid var(--color-grid);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      transition: border-color 0.2s;
+    }
+
+    .partner-badge:hover {
+      border-color: var(--color-indigo);
+    }
+
+    .editor-list {
+      list-style: none;
+    }
+
+    .editor-list li {
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--color-grid);
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-sm);
+    }
+
+    .editor-list li:last-child {
+      border-bottom: none;
+    }
+
+    .editor-name {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+
+    .editor-role {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Footer ────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-text);
+      color: rgba(255, 255, 255, 0.7);
+      padding: var(--space-3xl) 0 var(--space-xl);
+      position: relative;
+    }
+
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--space-2xl);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-brand .logo-r2 {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: var(--space-md);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: var(--space-xs);
+    }
+
+    .footer-col a {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    .footer-meta {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.7;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: var(--space-2xl);
+      padding-top: var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-bottom p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* ── Mockup Toggle ─────────────────────────────────── */
+    .mockup-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      gap: 0;
+      background: rgba(0,0,0,0.7);
+      border-radius: 2rem;
+      padding: 0.35rem 0.5rem;
+      z-index: 9999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .mockup-toggle a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+    .mockup-toggle a:hover { color: white; background: rgba(255,255,255,0.15); }
+    .mockup-toggle a.active { color: white; background: rgba(255,255,255,0.25); font-weight: 700; }
+
+    /* ── Responsive ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .data-cards {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+
+      .feature-panels {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+
+      .partners-editors-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 1.65rem;
+      }
+
+      .header-nav {
+        gap: var(--space-md);
+      }
+
+      .header-nav a {
+        font-size: 0.65rem;
+      }
+
+      .stat-value {
+        font-size: 2.25rem;
+      }
+
+      .disciplines-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: var(--space-sm);
+      }
+
+      .discipline-node {
+        font-size: 0.72rem;
+        padding: 0.5rem 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-brand">
+        <span class="logo-r2">R&sup2;</span>
+        <span class="logo-full">Replication Research</span>
+      </div>
+      <nav>
+        <ul class="header-nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Articles</a></li>
+          <li><a href="#">Submit</a></li>
+          <li><a href="#">Editorial Board</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Hero Section ───────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-abstract">
+        <span class="hero-label">Open Access Journal</span>
+        <h1 class="hero-title">Advancing Science Through Replication</h1>
+        <p class="hero-description">
+          Replication Research (R&sup2;) is an open-access, peer-reviewed journal dedicated to
+          publishing replication and reproduction studies across all scientific disciplines.
+          We provide rigorous, transparent evaluation of empirical findings to strengthen
+          the foundations of cumulative knowledge. All submissions undergo reproducibility
+          checks and open peer review to ensure the highest methodological standards.
+        </p>
+      </div>
+
+      <div class="data-cards">
+        <div class="data-card">
+          <div class="data-card-value">10+</div>
+          <div class="data-card-label">Disciplines</div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-value">Vol. 1</div>
+          <div class="data-card-label">2025</div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-value">3052-5977</div>
+          <div class="data-card-label">ISSN</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Feature Panels ─────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-heading">Core Principles</h2>
+      <p class="section-subheading">// How we ensure quality and transparency</p>
+
+      <div class="feature-panels">
+        <!-- Panel 1: Open Peer Review -->
+        <div class="feature-panel">
+          <div class="feature-indicator">
+            <span class="feature-dot feature-dot--indigo"></span>
+            <span class="feature-status">Active</span>
+          </div>
+          <h3>Open &amp; Persistent Peer Review</h3>
+          <p>
+            Every review is published alongside the article with reviewer identities disclosed.
+            Reviews remain permanently accessible, fostering accountability and scholarly dialogue.
+          </p>
+          <div class="feature-viz feature-viz--bar">
+            <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, var(--color-indigo), var(--color-chart));"></div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Reproducibility -->
+        <div class="feature-panel">
+          <div class="feature-indicator">
+            <span class="feature-dot feature-dot--green"></span>
+            <span class="feature-status">Verified</span>
+          </div>
+          <h3>Reproducibility Checks</h3>
+          <p>
+            Submitted analyses are independently verified for computational reproducibility.
+            Data and code must be openly shared, and results are confirmed before publication.
+          </p>
+          <div class="feature-viz feature-viz--dots">
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot filled"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+
+        <!-- Panel 3: No APCs -->
+        <div class="feature-panel">
+          <div class="feature-indicator">
+            <span class="feature-dot feature-dot--amber"></span>
+            <span class="feature-status">Diamond OA</span>
+          </div>
+          <h3>No Article Processing Charges</h3>
+          <p>
+            R&sup2; operates as a Diamond Open Access journal. Authors pay nothing to publish, and
+            readers pay nothing to access. Science should be free for everyone.
+          </p>
+          <div class="feature-viz feature-viz--segments">
+            <span class="segment filled"></span>
+            <span class="segment filled"></span>
+            <span class="segment filled"></span>
+            <span class="segment filled"></span>
+            <span class="segment filled"></span>
+            <span class="segment filled"></span>
+            <span class="segment filled"></span>
+            <span class="segment filled"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Latest Articles (Timeline) ─────────────────── -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-heading">Latest Articles</h2>
+      <p class="section-subheading">// git log --oneline --recent</p>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <span class="timeline-dot"></span>
+          <h3 class="timeline-item-title">
+            <a href="#">A Multi-Lab Replication of the Ego Depletion Effect</a>
+          </h3>
+          <div class="timeline-item-meta">
+            R&ouml;seler, L., Sch&uuml;tz, A., et al.
+          </div>
+          <span class="timeline-item-discipline">Psychology</span>
+        </article>
+
+        <article class="timeline-item">
+          <span class="timeline-dot"></span>
+          <h3 class="timeline-item-title">
+            <a href="#">Reproducibility of fMRI-Based Amygdala Activation Patterns</a>
+          </h3>
+          <div class="timeline-item-meta">
+            Chen, Y., Nakamura, K., et al.
+          </div>
+          <span class="timeline-item-discipline">Neuroscience</span>
+        </article>
+
+        <article class="timeline-item">
+          <span class="timeline-dot"></span>
+          <h3 class="timeline-item-title">
+            <a href="#">Conceptual Replication of Anchoring Effects in Judicial Sentencing</a>
+          </h3>
+          <div class="timeline-item-meta">
+            Weber, M., Hoffmann, T., et al.
+          </div>
+          <span class="timeline-item-discipline">Political Science</span>
+        </article>
+
+        <article class="timeline-item">
+          <span class="timeline-dot"></span>
+          <h3 class="timeline-item-title">
+            <a href="#">Pre-Registered Replication of Growth Mindset Interventions</a>
+          </h3>
+          <div class="timeline-item-meta">
+            Patel, R., O'Brien, S., et al.
+          </div>
+          <span class="timeline-item-discipline">Psychology</span>
+        </article>
+
+        <article class="timeline-item">
+          <span class="timeline-dot"></span>
+          <h3 class="timeline-item-title">
+            <a href="#">Reproduction of Climate Model Sensitivity Estimates</a>
+          </h3>
+          <div class="timeline-item-meta">
+            Lindstr&ouml;m, E., Garcia, F., et al.
+          </div>
+          <span class="timeline-item-discipline">Geosciences</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Disciplines ────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-heading">Disciplines</h2>
+      <p class="section-subheading">// Connected fields of inquiry</p>
+
+      <div class="disciplines-grid">
+        <div class="discipline-node">Psychology</div>
+        <div class="discipline-node">Neuroscience</div>
+        <div class="discipline-node">Economics</div>
+        <div class="discipline-node">Political Science</div>
+        <div class="discipline-node">Sociology</div>
+        <div class="discipline-node">Education</div>
+        <div class="discipline-node">Geosciences</div>
+        <div class="discipline-node">Biology</div>
+        <div class="discipline-node">Medicine</div>
+        <div class="discipline-node">Computer Science</div>
+        <div class="discipline-node">Physics</div>
+        <div class="discipline-node">Management</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats Section ──────────────────────────────── -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Open Access</div>
+          <div class="stat-bar"><div class="stat-bar-fill"></div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Peer Reviewed</div>
+          <div class="stat-bar"><div class="stat-bar-fill"></div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">0</div>
+          <div class="stat-label">APCs</div>
+          <div class="stat-bar"><div class="stat-bar-fill"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Partners & Editors ─────────────────────────── -->
+  <section class="partners-editors">
+    <div class="container">
+      <div class="partners-editors-grid">
+        <div>
+          <h2 class="pe-heading">Partners &amp; Infrastructure</h2>
+          <div class="partner-badges">
+            <span class="partner-badge">PCI</span>
+            <span class="partner-badge">MetaROR</span>
+            <span class="partner-badge">TROLLing</span>
+            <span class="partner-badge">JCRe</span>
+          </div>
+        </div>
+        <div>
+          <h2 class="pe-heading">Editorial Team</h2>
+          <ul class="editor-list">
+            <li>
+              <span class="editor-name">Lukas R&ouml;seler</span>
+              <span class="editor-role">Editor-in-Chief</span>
+            </li>
+            <li>
+              <span class="editor-name">Lukas Wallrich</span>
+              <span class="editor-role">Editor</span>
+            </li>
+            <li>
+              <span class="editor-name">Flavio Azevedo</span>
+              <span class="editor-role">Editor</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-r2">R&sup2;</div>
+          <p>
+            Replication Research is published by the University of M&uuml;nster
+            in collaboration with M&uuml;COS &amp; FORRT. Committed to open,
+            transparent, and reproducible science.
+          </p>
+          <div class="footer-meta" style="margin-top: var(--space-md);">
+            ISSN 3052-5977<br>
+            CC BY 4.0
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Journal</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Editorial Board</a></li>
+            <li><a href="#">Submit a Manuscript</a></li>
+            <li><a href="#">Policies</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Author Guidelines</a></li>
+            <li><a href="#">Reviewer Guidelines</a></li>
+            <li><a href="#">Open Data Policy</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Replication Research. University of M&uuml;nster.</p>
+        <p>M&uuml;COS &amp; FORRT &middot; CC BY 4.0</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Mockup Toggle ──────────────────────────────── -->
+  <div class="mockup-toggle">
+    <a href="mockup1-clean-academic.html">1</a>
+    <a href="mockup2-modern-cards.html">2</a>
+    <a href="mockup3-bold-distinctive.html">3</a>
+    <a href="mockup4-classic-scholarly.html">4</a>
+    <a href="mockup5-science-forward.html" class="active">5</a>
+  </div>
+
+</body>
+</html>
