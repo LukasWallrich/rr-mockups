@@ -3,77 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Replication Research (R²) — Modern Card-Based</title>
+  <title>Replication Research (R²) — Open Science</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    /* ==============================
-       CSS Custom Properties
-       ============================== */
     :root {
-      --color-bg: #FFFFFF;
-      --color-text: #212121;
-      --color-text-secondary: #616161;
-      --color-blue: #0369A1;
-      --color-light-blue-bg: #E0F2FE;
-      --color-section-bg: #F0F9FF;
-      --color-orange-cta: #EA580C;
-      --color-green-oa: #16A34A;
-      --color-purple-cat: #7C3AED;
-      --color-card-border: #E0E0E0;
-      --color-nav-dark: #0C4A6E;
-      --color-nav-hover: rgba(255, 255, 255, 0.15);
+      --teal-900: #004055;
+      --teal-800: #00586F;
+      --teal-700: #006D87;
+      --teal-600: #0084A0;
+      --teal-500: #009BB8;
+      --teal-400: #33B5CF;
+      --teal-100: #D0F0F8;
+      --teal-50: #EBF9FC;
+      --cream: #FEFDF6;
+      --cream-dark: #F5F0E3;
+      --warm-white: #FFFEF9;
+      --text: #1A2E35;
+      --text-secondary: #4A6670;
+      --text-muted: #7A949D;
+      --amber: #D97706;
+      --amber-light: #FEF3C7;
+      --green: #0E8A5F;
+      --green-light: #D1FAE5;
+      --rose: #BE185D;
+      --rose-light: #FCE7F3;
+      --border: #D8E4E8;
 
-      --font-sans: 'Noto Sans', sans-serif;
-      --font-serif: 'Noto Serif', serif;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Libre Baskerville', Georgia, serif;
 
-      --max-width: 1114px;
-      --radius-sm: 0.375rem;
-      --radius-md: 0.625rem;
-      --radius-lg: 1rem;
-      --radius-pill: 9999px;
-
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-      --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.15);
-
+      --max-width: 1120px;
+      --radius: 0.5rem;
+      --radius-lg: 0.85rem;
+      --shadow-soft: 0 1px 3px rgba(0,64,85,0.06), 0 4px 12px rgba(0,64,85,0.04);
+      --shadow-hover: 0 4px 16px rgba(0,64,85,0.1), 0 8px 24px rgba(0,64,85,0.06);
       --transition: 0.25s ease;
     }
 
-    /* ==============================
-       Reset & Base
-       ============================== */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
     body {
-      font-family: var(--font-sans);
-      color: var(--color-text);
-      background: var(--color-bg);
-      line-height: 1.6;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
       font-size: 16px;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       max-width: var(--max-width);
@@ -82,542 +63,627 @@
     }
 
     /* ==============================
-       1. Sticky Nav Bar
+       Navigation
        ============================== */
     .site-nav {
+      background: var(--teal-900);
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: var(--color-nav-dark);
-      padding: 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .site-nav .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      height: 3.75rem;
+      height: 3.5rem;
+      gap: 1rem;
     }
 
-    .nav-logo {
-      font-family: var(--font-sans);
+    .nav-brand {
+      font-family: var(--font-display);
       font-weight: 700;
-      font-size: 1.5rem;
-      color: #fff;
-      letter-spacing: -0.02em;
+      font-size: 1.35rem;
+      color: var(--cream);
       flex-shrink: 0;
+      letter-spacing: -0.01em;
     }
 
-    .nav-logo sup {
-      font-size: 0.65em;
-      vertical-align: super;
-    }
+    .nav-brand sup { font-size: 0.6em; }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.15rem;
       list-style: none;
+      margin-left: auto;
     }
 
     .nav-links a {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.875rem;
+      font-family: var(--font-display);
+      color: rgba(254,253,246,0.75);
+      font-size: 0.85rem;
       font-weight: 500;
-      padding: 0.4rem 0.7rem;
-      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius);
       transition: color var(--transition), background var(--transition);
       white-space: nowrap;
     }
 
     .nav-links a:hover {
-      color: #fff;
-      background: var(--color-nav-hover);
+      color: var(--cream);
+      background: rgba(254,253,246,0.1);
     }
 
-    .nav-submit {
-      background: var(--color-orange-cta);
-      color: #fff !important;
+    .nav-cta {
+      font-family: var(--font-display);
       font-weight: 600;
-      padding: 0.5rem 1.25rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.875rem;
+      font-size: 0.85rem;
+      color: var(--teal-900) !important;
+      background: var(--cream);
+      padding: 0.4rem 1.1rem;
+      border-radius: 2rem;
       transition: background var(--transition), transform var(--transition);
       flex-shrink: 0;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
+      margin-left: 0.5rem;
     }
 
-    .nav-submit:hover {
-      background: #c2410c;
+    .nav-cta:hover {
+      background: #fff;
       transform: translateY(-1px);
     }
 
-    /* Mobile nav toggle */
     .nav-toggle {
       display: none;
       background: none;
       border: none;
       cursor: pointer;
       padding: 0.5rem;
+      margin-left: auto;
     }
 
     .nav-toggle span {
       display: block;
-      width: 22px;
+      width: 20px;
       height: 2px;
-      background: #fff;
-      margin: 5px 0;
-      border-radius: 2px;
-      transition: var(--transition);
+      background: var(--cream);
+      margin: 4px 0;
+      border-radius: 1px;
     }
 
     /* ==============================
-       2. Hero Section
+       Hero
        ============================== */
     .hero {
-      background: linear-gradient(180deg, var(--color-light-blue-bg) 0%, #fff 100%);
-      padding: 5rem 0 4rem;
-      text-align: center;
+      background: var(--teal-900);
+      padding: 4.5rem 0 5.5rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-title {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 2.75rem;
-      color: var(--color-text);
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 4rem;
+      background: var(--cream);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
     }
 
-    .hero-badge {
-      display: inline-flex;
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
       align-items: center;
-      justify-content: center;
-      background: var(--color-blue);
-      color: #fff;
-      font-family: var(--font-sans);
+    }
+
+    .hero-text h1 {
+      font-family: var(--font-display);
       font-weight: 700;
-      font-size: 1.5rem;
-      padding: 0.3rem 0.85rem;
-      border-radius: var(--radius-md);
-      margin-right: 0.35rem;
-      vertical-align: middle;
-      letter-spacing: -0.02em;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
     }
 
-    .hero-badge sup {
-      font-size: 0.6em;
-      line-height: 1;
+    .hero-text h1 span {
+      display: block;
+      font-size: 0.45em;
+      font-weight: 400;
+      color: var(--teal-400);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
     }
 
-    .hero-subtitle {
-      font-size: 1.15rem;
-      color: var(--color-text-secondary);
-      max-width: 640px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.65;
+    .hero-tagline {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--teal-100);
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
     }
 
-    .hero-stats {
+    .hero-desc {
+      color: rgba(254,253,246,0.7);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .hero-buttons {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
     }
 
-    .stat-card {
+    .btn {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 2rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary {
+      background: var(--cream);
+      color: var(--teal-900);
+    }
+
+    .btn-primary:hover {
       background: #fff;
-      border-radius: var(--radius-md);
-      padding: 1.5rem 2rem;
-      box-shadow: var(--shadow-md);
-      min-width: 180px;
-      text-align: center;
-      transition: transform var(--transition), box-shadow var(--transition);
+      transform: translateY(-1px);
     }
 
-    .stat-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(254,253,246,0.35);
     }
 
-    .stat-card-value {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--color-blue);
+    .btn-outline:hover {
+      border-color: var(--cream);
+      background: rgba(254,253,246,0.08);
+    }
+
+    /* Hero right: floating cards */
+    .hero-visual {
+      position: relative;
+      min-height: 280px;
+    }
+
+    .float-card {
+      position: absolute;
+      background: rgba(254,253,246,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(254,253,246,0.15);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.3rem;
+      color: var(--cream);
+      font-family: var(--font-display);
+    }
+
+    .float-card-1 {
+      top: 0;
+      right: 0;
+      width: 210px;
+    }
+
+    .float-card-2 {
+      top: 45%;
+      left: 0;
+      width: 200px;
+    }
+
+    .float-card-3 {
+      bottom: 0;
+      right: 2rem;
+      width: 190px;
+    }
+
+    .float-card .fc-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--teal-400);
+      font-weight: 600;
       margin-bottom: 0.25rem;
     }
 
-    .stat-card-label {
-      font-size: 0.875rem;
-      color: var(--color-text-secondary);
-      font-weight: 500;
+    .float-card .fc-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .float-card .fc-sub {
+      font-size: 0.8rem;
+      color: rgba(254,253,246,0.6);
+      margin-top: 0.15rem;
     }
 
     /* ==============================
-       3. Key Features
+       Mission Strip
        ============================== */
-    .features {
-      padding: 4.5rem 0;
-      background: var(--color-bg);
+    .mission {
+      padding: 3.5rem 0 4rem;
+      background: var(--cream);
     }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
-    }
-
-    .feature-card {
-      background: #fff;
-      border: 1px solid var(--color-card-border);
-      border-radius: var(--radius-lg);
-      padding: 2rem 1.75rem;
-      text-align: center;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .feature-icon {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.25rem;
-      font-size: 1.5rem;
-    }
-
-    .feature-icon--blue {
-      background: var(--color-light-blue-bg);
-      color: var(--color-blue);
-    }
-
-    .feature-icon--green {
-      background: #DCFCE7;
-      color: var(--color-green-oa);
-    }
-
-    .feature-icon--orange {
-      background: #FFF7ED;
-      color: var(--color-orange-cta);
-    }
-
-    .feature-card h3 {
-      font-size: 1.125rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--color-text);
-    }
-
-    .feature-card p {
-      font-size: 0.9375rem;
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ==============================
-       4. Latest Articles
-       ============================== */
-    .articles {
-      padding: 4.5rem 0;
-      background: var(--color-section-bg);
-    }
-
-    .section-heading {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 1.75rem;
-      margin-bottom: 2rem;
-      color: var(--color-text);
-    }
-
-    .articles-grid {
+    .mission-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
 
-    .article-card {
-      background: #fff;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--color-card-border);
-      display: flex;
-      flex-direction: column;
+    .mission-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
       transition: transform var(--transition), box-shadow var(--transition);
-      cursor: pointer;
     }
 
-    .article-card:hover {
-      transform: translateY(-6px);
+    .mission-card:hover {
+      transform: translateY(-3px);
       box-shadow: var(--shadow-hover);
     }
 
-    .article-card-top-border {
-      height: 4px;
-      width: 100%;
-    }
-
-    .article-card-body {
-      padding: 1.5rem;
-      flex: 1;
+    .mission-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 0.6rem;
       display: flex;
-      flex-direction: column;
-    }
-
-    .article-badge {
-      display: inline-block;
-      padding: 0.2rem 0.65rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      align-self: flex-start;
-    }
-
-    .badge-psychology {
-      background: #F3E8FF;
-      color: var(--color-purple-cat);
-    }
-
-    .badge-neuroscience {
-      background: var(--color-light-blue-bg);
-      color: var(--color-blue);
-    }
-
-    .badge-polisci {
-      background: #FEF3C7;
-      color: #B45309;
-    }
-
-    .badge-geosciences {
-      background: #DCFCE7;
-      color: #15803D;
-    }
-
-    .article-card-title {
-      font-family: var(--font-serif);
-      font-weight: 600;
-      font-size: 1.0625rem;
-      line-height: 1.45;
-      margin-bottom: 0.5rem;
-      color: var(--color-text);
-    }
-
-    .article-card-authors {
-      font-size: 0.8125rem;
-      color: var(--color-text-secondary);
+      align-items: center;
+      justify-content: center;
       margin-bottom: 1rem;
-      flex: 1;
+      font-size: 1.2rem;
     }
 
-    .article-card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      padding-top: 0.75rem;
-      border-top: 1px solid #F3F4F6;
-      font-size: 0.75rem;
-    }
+    .mission-icon--teal { background: var(--teal-50); color: var(--teal-700); }
+    .mission-icon--green { background: var(--green-light); color: var(--green); }
+    .mission-icon--amber { background: var(--amber-light); color: var(--amber); }
 
-    .article-card-date {
-      color: var(--color-text-secondary);
-    }
-
-    .article-card-review {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      background: #DCFCE7;
-      color: var(--color-green-oa);
-      padding: 0.15rem 0.55rem;
-      border-radius: var(--radius-pill);
+    .mission-card h3 {
+      font-family: var(--font-display);
       font-weight: 600;
-      font-size: 0.7rem;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
     }
 
-    .article-card-type {
-      color: var(--color-text-secondary);
-      font-weight: 500;
+    .mission-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
     }
 
     /* ==============================
-       5. Disciplines
+       Articles
        ============================== */
-    .disciplines {
-      padding: 4.5rem 0;
-      background: var(--color-section-bg);
+    .articles {
+      padding: 4rem 0;
+      background: var(--teal-50);
     }
 
-    .disciplines-chips {
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--text);
+    }
+
+    .section-link {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--teal-700);
+      transition: color var(--transition);
+    }
+
+    .section-link:hover { color: var(--teal-900); }
+
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .article-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      align-items: start;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .article-row:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .article-discipline {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .disc-psychology    { background: #EDE9FE; color: #6D28D9; }
+    .disc-neuroscience  { background: var(--teal-100); color: var(--teal-800); }
+    .disc-polisci       { background: var(--amber-light); color: #92400E; }
+    .disc-geosciences   { background: var(--green-light); color: #065F46; }
+
+    .article-title {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--teal-900);
+      margin-bottom: 0.35rem;
+    }
+
+    .article-title:hover { color: var(--teal-700); }
+
+    .article-authors {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .article-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .article-type {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--teal-700);
+      background: var(--teal-100);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+    }
+
+    .article-review-badge {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .article-year {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ==============================
+       Disciplines
+       ============================== */
+    .disciplines {
+      padding: 4rem 0;
+      background: var(--cream);
+    }
+
+    .disc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .disc-pill {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--warm-white);
+      text-align: center;
+      color: var(--text);
+      transition: all var(--transition);
+    }
+
+    .disc-pill:hover {
+      border-color: var(--teal-500);
+      background: var(--teal-50);
+      color: var(--teal-800);
+    }
+
+    /* ==============================
+       Open Science Callout
+       ============================== */
+    .callout {
+      padding: 4rem 0;
+      background: var(--teal-900);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .callout h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .callout p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: rgba(254,253,246,0.7);
+      font-size: 0.95rem;
+    }
+
+    .callout .btn-primary {
+      background: var(--cream);
+      color: var(--teal-900);
+    }
+
+    .callout .btn-primary:hover {
+      background: #fff;
+    }
+
+    /* ==============================
+       Editors & Partners
+       ============================== */
+    .people-partners {
+      padding: 4rem 0;
+      background: var(--teal-50);
+    }
+
+    .pp-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+    }
+
+    .pp-grid h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.35rem;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    .editors-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .editor-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .editor-avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--teal-900);
+      color: var(--cream);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .editor-info {
+      font-family: var(--font-display);
+    }
+
+    .editor-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .editor-role {
+      font-size: 0.8rem;
+      color: var(--teal-700);
+      font-weight: 500;
+    }
+
+    .editor-affiliation {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .partners-list {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
     }
 
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.5rem 1.15rem;
-      border-radius: var(--radius-pill);
+    .partner-badge {
+      font-family: var(--font-display);
+      font-weight: 600;
       font-size: 0.9rem;
-      font-weight: 600;
-      transition: transform var(--transition), box-shadow var(--transition);
-      cursor: default;
+      padding: 0.6rem 1.2rem;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      transition: all var(--transition);
     }
 
-    .chip:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .chip--psychology      { background: #F3E8FF; color: #6D28D9; }
-    .chip--economics       { background: #DBEAFE; color: #1E40AF; }
-    .chip--medicine        { background: #FEE2E2; color: #B91C1C; }
-    .chip--neuroscience    { background: #E0F2FE; color: #0369A1; }
-    .chip--polisci         { background: #FEF3C7; color: #B45309; }
-    .chip--linguistics     { background: #FCE7F3; color: #BE185D; }
-    .chip--geosciences     { background: #DCFCE7; color: #15803D; }
-    .chip--digital-hum     { background: #F0FDFA; color: #0F766E; }
-    .chip--exp-philosophy  { background: #FFF7ED; color: #C2410C; }
-    .chip--metascience     { background: #F5F3FF; color: #5B21B6; }
-
-    /* ==============================
-       6. Partners
-       ============================== */
-    .partners {
-      padding: 3.5rem 0;
-      background: #F5F5F5;
-    }
-
-    .partners .section-heading {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .partners-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .partner-item {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--color-text-secondary);
-      background: #fff;
-      padding: 1rem 2rem;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--color-card-border);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .partner-item:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      color: var(--color-blue);
+    .partner-badge:hover {
+      border-color: var(--teal-500);
+      color: var(--teal-800);
     }
 
     /* ==============================
-       7. Editorial Team
-       ============================== */
-    .editorial {
-      padding: 4.5rem 0;
-      background: var(--color-bg);
-    }
-
-    .editorial .section-heading {
-      text-align: center;
-    }
-
-    .editorial-grid {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .editor-card {
-      background: #fff;
-      border: 1px solid var(--color-card-border);
-      border-radius: var(--radius-lg);
-      padding: 2rem 1.5rem;
-      text-align: center;
-      width: 260px;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .editor-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .editor-avatar {
-      width: 5rem;
-      height: 5rem;
-      border-radius: 50%;
-      background: var(--color-light-blue-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--color-blue);
-    }
-
-    .editor-name {
-      font-weight: 700;
-      font-size: 1.05rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .editor-role {
-      font-size: 0.8125rem;
-      color: var(--color-orange-cta);
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-
-    .editor-affiliation {
-      font-size: 0.8125rem;
-      color: var(--color-text-secondary);
-      line-height: 1.5;
-    }
-
-    /* ==============================
-       8. Footer
+       Footer
        ============================== */
     .site-footer {
-      background: var(--color-nav-dark);
-      color: rgba(255, 255, 255, 0.75);
+      background: var(--teal-900);
+      color: rgba(254,253,246,0.6);
       padding: 2.5rem 0;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--cream);
+    }
+
+    .footer-brand sup { font-size: 0.6em; }
+
+    .footer-info {
       text-align: center;
-      font-size: 0.875rem;
       line-height: 1.8;
     }
 
-    .site-footer strong {
-      color: #fff;
-    }
-
     .footer-cc {
-      margin-top: 0.5rem;
+      color: rgba(254,253,246,0.4);
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.5);
     }
 
     /* ==============================
@@ -654,124 +720,62 @@
     /* ==============================
        Responsive
        ============================== */
-    @media (max-width: 960px) {
-      .articles-grid {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
       }
-
-      .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .features-grid .feature-card:last-child {
-        grid-column: 1 / -1;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .hero-title {
-        font-size: 2.25rem;
-      }
+      .hero-visual { display: none; }
+      .hero { padding: 3.5rem 0 4.5rem; }
+      .mission-grid { grid-template-columns: 1fr; }
+      .pp-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 3.75rem;
-        left: 0;
-        right: 0;
-        background: var(--color-nav-dark);
-        flex-direction: column;
-        padding: 1rem;
-        gap: 0.25rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      }
-
+      .nav-links { display: none; }
       .nav-links.open {
         display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 3.5rem;
+        left: 0;
+        right: 0;
+        background: var(--teal-900);
+        padding: 1rem;
+        gap: 0.25rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       }
+      .nav-links.open a { padding: 0.6rem 1rem; }
+      .nav-toggle { display: block; }
+      .nav-cta { font-size: 0.8rem; padding: 0.35rem 0.9rem; }
 
-      .nav-links a {
-        padding: 0.65rem 1rem;
-        width: 100%;
-      }
-
-      .nav-toggle {
-        display: block;
-      }
-
-      .hero {
-        padding: 3.5rem 0 3rem;
-      }
-
-      .hero-title {
-        font-size: 1.85rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-
-      .stat-card {
-        min-width: 140px;
-        padding: 1rem 1.25rem;
-      }
-
-      .articles-grid,
-      .features-grid {
+      .article-row {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
       }
-
-      .features-grid .feature-card:last-child {
-        max-width: none;
-      }
-
-      .editor-card {
-        width: 100%;
-        max-width: 280px;
-      }
-
-      .partners-row {
-        gap: 1.5rem;
+      .article-meta {
+        flex-direction: row;
+        align-items: center;
       }
     }
 
     @media (max-width: 480px) {
-      .hero-stats {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .stat-card {
-        width: 100%;
-        max-width: 260px;
-      }
-
-      .hero-title {
-        font-size: 1.6rem;
-      }
-
-      .section-heading {
-        font-size: 1.4rem;
-      }
+      .hero-text h1 { font-size: 1.75rem; }
+      .hero-buttons { flex-direction: column; }
+      .btn { justify-content: center; }
+      .disc-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================================
-       1. Sticky Nav Bar
-       ================================ -->
-  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <!-- Navigation -->
+  <nav class="site-nav">
     <div class="container">
-      <a href="#" class="nav-logo">R<sup>2</sup></a>
+      <a href="#" class="nav-brand">R<sup>2</sup> Replication Research</a>
 
       <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
       <ul class="nav-links">
@@ -785,167 +789,161 @@
         <li><a href="#">Contact</a></li>
       </ul>
 
-      <a href="#" class="nav-submit">Submit</a>
+      <a href="#" class="nav-cta">Submit</a>
     </div>
   </nav>
 
-  <!-- ================================
-       2. Hero Section
-       ================================ -->
+  <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1 class="hero-title">
-        <span class="hero-badge">R<sup>2</sup></span> Replication Research
-      </h1>
-      <p class="hero-subtitle">
-        A Diamond Open Access journal dedicated to publishing replication and reproducibility studies across all scientific disciplines. Free to read, free to publish.
-      </p>
-
-      <div class="hero-stats">
-        <div class="stat-card">
-          <div class="stat-card-value">10+</div>
-          <div class="stat-card-label">Disciplines</div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1>
+            <span>Diamond Open Access Journal</span>
+            Replication Research
+          </h1>
+          <p class="hero-tagline">Free to read, free to publish</p>
+          <p class="hero-desc">
+            A transdisciplinary journal dedicated to publishing replications,
+            reproductions, and conceptual replications with rigorous, transparent
+            peer review and no article processing charges.
+          </p>
+          <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">Read Current Issue</a>
+            <a href="#" class="btn btn-outline">Submit Manuscript</a>
+          </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-card-value">Vol. 1</div>
-          <div class="stat-card-label">2025</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-value">100%</div>
-          <div class="stat-card-label">Open Access</div>
+        <div class="hero-visual">
+          <div class="float-card float-card-1">
+            <div class="fc-label">Current Issue</div>
+            <div class="fc-value">Vol. 1</div>
+            <div class="fc-sub">Published October 2025</div>
+          </div>
+          <div class="float-card float-card-2">
+            <div class="fc-label">Covering</div>
+            <div class="fc-value">10+ Disciplines</div>
+            <div class="fc-sub">From psychology to geosciences</div>
+          </div>
+          <div class="float-card float-card-3">
+            <div class="fc-label">Article Costs</div>
+            <div class="fc-value">&euro;0</div>
+            <div class="fc-sub">Forever free to publish</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================================
-       3. Key Features
-       ================================ -->
-  <section class="features">
+  <!-- Key Features -->
+  <section class="mission">
     <div class="container">
-      <div class="features-grid">
-
-        <article class="feature-card">
-          <div class="feature-icon feature-icon--blue">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <div class="mission-icon mission-icon--teal">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
-          <h3>Open Peer Review</h3>
-          <p>Transparent, community-driven peer review. All reviews are published alongside articles, ensuring accountability and fostering constructive scholarly dialogue.</p>
-        </article>
+          <h3>Open &amp; Persistent Peer Review</h3>
+          <p>All reviews are published after each round, regardless of manuscript outcome. Full transparency via PubPeer ensures accountability throughout the process.</p>
+        </div>
 
-        <article class="feature-card">
-          <div class="feature-icon feature-icon--green">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 11l3 3L22 4"/>
-              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        <div class="mission-card">
+          <div class="mission-icon mission-icon--green">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
             </svg>
           </div>
-          <h3>Reproducibility First</h3>
-          <p>Every submission must include data and analysis code. Computational reproducibility checks are part of the review process, raising the bar for scientific rigour.</p>
-        </article>
+          <h3>Reproducibility Checks</h3>
+          <p>Every submission undergoes computational verification. A dedicated reproducibility manager and team confirm that reported results can be reproduced from data and code.</p>
+        </div>
 
-        <article class="feature-card">
-          <div class="feature-icon feature-icon--orange">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="8" x2="12" y2="12"/>
-              <line x1="12" y1="16" x2="12.01" y2="16"/>
+        <div class="mission-card">
+          <div class="mission-icon mission-icon--amber">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
           </div>
-          <h3>No APCs Ever</h3>
-          <p>Diamond Open Access means no article processing charges for authors and no paywalls for readers. Science should be freely accessible to everyone, always.</p>
-        </article>
-
+          <h3>No APCs &mdash; Ever</h3>
+          <p>Diamond Open Access means no charges for authors and no paywalls for readers. Supported by the University of M&uuml;nster and the open access community.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ================================
-       4. Latest Articles
-       ================================ -->
+  <!-- Latest Articles -->
   <section class="articles">
     <div class="container">
-      <h2 class="section-heading">Latest Articles</h2>
+      <div class="section-header">
+        <h2 class="section-title">Latest Articles</h2>
+        <a href="#" class="section-link">View all &rarr;</a>
+      </div>
 
-      <div class="articles-grid">
+      <div class="articles-list">
 
-        <!-- Article 1 -->
-        <article class="article-card">
-          <div class="article-card-top-border" style="background: var(--color-purple-cat);"></div>
-          <div class="article-card-body">
-            <span class="article-badge badge-psychology">Psychology</span>
-            <h3 class="article-card-title">A Multi-Lab Replication of the Ego Depletion Effect</h3>
-            <p class="article-card-authors">R&ouml;seler, L., Sch&uuml;tz, A., et al.</p>
-            <div class="article-card-meta">
-              <span class="article-card-date">2025</span>
-              <span class="article-card-review">&#10003; Open Review</span>
-              <span class="article-card-type">Replication</span>
-            </div>
+        <article class="article-row">
+          <div>
+            <span class="article-discipline disc-psychology">Psychology</span>
+            <h3 class="article-title">A Multi-Lab Replication of the Ego Depletion Effect Using the Sequential Task Paradigm</h3>
+            <p class="article-authors">R&ouml;seler, L., Sch&uuml;tz, A., et al.</p>
+          </div>
+          <div class="article-meta">
+            <span class="article-type">Replication</span>
+            <span class="article-review-badge">&#10003; Open Review</span>
+            <span class="article-year">2025</span>
           </div>
         </article>
 
-        <!-- Article 2 -->
-        <article class="article-card">
-          <div class="article-card-top-border" style="background: var(--color-blue);"></div>
-          <div class="article-card-body">
-            <span class="article-badge badge-neuroscience">Neuroscience</span>
-            <h3 class="article-card-title">Reproducibility of fMRI-Based Amygdala Activation Patterns</h3>
-            <p class="article-card-authors">Chen, Y., Nakamura, K., et al.</p>
-            <div class="article-card-meta">
-              <span class="article-card-date">2025</span>
-              <span class="article-card-review">&#10003; Open Review</span>
-              <span class="article-card-type">Reproduction</span>
-            </div>
+        <article class="article-row">
+          <div>
+            <span class="article-discipline disc-neuroscience">Neuroscience</span>
+            <h3 class="article-title">Reproducibility of fMRI-Based Amygdala Activation Patterns in Emotional Face Processing</h3>
+            <p class="article-authors">Chen, Y., Nakamura, K., et al.</p>
+          </div>
+          <div class="article-meta">
+            <span class="article-type">Reproduction</span>
+            <span class="article-review-badge">&#10003; Open Review</span>
+            <span class="article-year">2025</span>
           </div>
         </article>
 
-        <!-- Article 3 -->
-        <article class="article-card">
-          <div class="article-card-top-border" style="background: #B45309;"></div>
-          <div class="article-card-body">
-            <span class="article-badge badge-polisci">Political Science</span>
-            <h3 class="article-card-title">Conceptual Replication of Anchoring Effects in Judicial Sentencing</h3>
-            <p class="article-card-authors">Weber, M., Hoffmann, T., et al.</p>
-            <div class="article-card-meta">
-              <span class="article-card-date">2025</span>
-              <span class="article-card-review">&#10003; Open Review</span>
-              <span class="article-card-type">Replication</span>
-            </div>
+        <article class="article-row">
+          <div>
+            <span class="article-discipline disc-polisci">Political Science</span>
+            <h3 class="article-title">Conceptual Replication of Anchoring Effects in Judicial Sentencing Decisions</h3>
+            <p class="article-authors">Weber, M., Hoffmann, T., et al.</p>
+          </div>
+          <div class="article-meta">
+            <span class="article-type">Replication</span>
+            <span class="article-review-badge">&#10003; Open Review</span>
+            <span class="article-year">2025</span>
           </div>
         </article>
 
-        <!-- Article 4 -->
-        <article class="article-card">
-          <div class="article-card-top-border" style="background: var(--color-purple-cat);"></div>
-          <div class="article-card-body">
-            <span class="article-badge badge-psychology">Psychology</span>
-            <h3 class="article-card-title">Pre-Registered Replication of Growth Mindset Interventions</h3>
-            <p class="article-card-authors">Patel, R., O'Brien, S., et al.</p>
-            <div class="article-card-meta">
-              <span class="article-card-date">2025</span>
-              <span class="article-card-review">&#10003; Open Review</span>
-              <span class="article-card-type">Replication</span>
-            </div>
+        <article class="article-row">
+          <div>
+            <span class="article-discipline disc-psychology">Psychology</span>
+            <h3 class="article-title">Pre-Registered Replication of Growth Mindset Interventions in Secondary Education</h3>
+            <p class="article-authors">Patel, R., O'Brien, S., et al.</p>
+          </div>
+          <div class="article-meta">
+            <span class="article-type">Replication</span>
+            <span class="article-review-badge">&#10003; Open Review</span>
+            <span class="article-year">2025</span>
           </div>
         </article>
 
-        <!-- Article 5 -->
-        <article class="article-card">
-          <div class="article-card-top-border" style="background: #15803D;"></div>
-          <div class="article-card-body">
-            <span class="article-badge badge-geosciences">Geosciences</span>
-            <h3 class="article-card-title">Reproduction of Climate Model Sensitivity Estimates</h3>
-            <p class="article-card-authors">Lindstr&ouml;m, E., Garcia, F., et al.</p>
-            <div class="article-card-meta">
-              <span class="article-card-date">2025</span>
-              <span class="article-card-review">&#10003; Open Review</span>
-              <span class="article-card-type">Reproduction</span>
-            </div>
+        <article class="article-row">
+          <div>
+            <span class="article-discipline disc-geosciences">Geosciences</span>
+            <h3 class="article-title">Reproduction of Climate Model Sensitivity Estimates Using Updated Observational Data</h3>
+            <p class="article-authors">Lindstr&ouml;m, E., Garcia, F., et al.</p>
+          </div>
+          <div class="article-meta">
+            <span class="article-type">Reproduction</span>
+            <span class="article-review-badge">&#10003; Open Review</span>
+            <span class="article-year">2025</span>
           </div>
         </article>
 
@@ -953,88 +951,97 @@
     </div>
   </section>
 
-  <!-- ================================
-       5. Disciplines
-       ================================ -->
+  <!-- Disciplines -->
   <section class="disciplines">
     <div class="container">
-      <h2 class="section-heading">Disciplines We Cover</h2>
-      <div class="disciplines-chips">
-        <span class="chip chip--psychology">Psychology</span>
-        <span class="chip chip--economics">Economics</span>
-        <span class="chip chip--medicine">Medicine</span>
-        <span class="chip chip--neuroscience">Neuroscience</span>
-        <span class="chip chip--polisci">Political Science</span>
-        <span class="chip chip--linguistics">Linguistics</span>
-        <span class="chip chip--geosciences">Geosciences</span>
-        <span class="chip chip--digital-hum">Digital Humanities</span>
-        <span class="chip chip--exp-philosophy">Experimental Philosophy</span>
-        <span class="chip chip--metascience">Metascience</span>
+      <div class="section-header">
+        <h2 class="section-title">Disciplines</h2>
+      </div>
+      <div class="disc-grid">
+        <div class="disc-pill">Psychology</div>
+        <div class="disc-pill">Economics</div>
+        <div class="disc-pill">Medicine</div>
+        <div class="disc-pill">Neuroscience</div>
+        <div class="disc-pill">Political Science</div>
+        <div class="disc-pill">Linguistics</div>
+        <div class="disc-pill">Geosciences</div>
+        <div class="disc-pill">Digital Humanities</div>
+        <div class="disc-pill">Experimental Philosophy</div>
+        <div class="disc-pill">Metascience</div>
       </div>
     </div>
   </section>
 
-  <!-- ================================
-       6. Partners
-       ================================ -->
-  <section class="partners">
+  <!-- Submit Callout -->
+  <section class="callout">
     <div class="container">
-      <h2 class="section-heading">Our Partners</h2>
-      <div class="partners-row">
-        <div class="partner-item">PCI</div>
-        <div class="partner-item">MetaROR</div>
-        <div class="partner-item">TROLLing</div>
-        <div class="partner-item">JCRe</div>
-      </div>
+      <h2>Advance Cumulative Science</h2>
+      <p>Submit your replication, reproduction, or conceptual replication study. We welcome contributions from all scientific disciplines.</p>
+      <a href="#" class="btn btn-primary">Submit Your Manuscript</a>
     </div>
   </section>
 
-  <!-- ================================
-       7. Editorial Team
-       ================================ -->
-  <section class="editorial">
+  <!-- Editors & Partners -->
+  <section class="people-partners">
     <div class="container">
-      <h2 class="section-heading">Editorial Team</h2>
-      <div class="editorial-grid">
-
-        <div class="editor-card">
-          <div class="editor-avatar">LR</div>
-          <div class="editor-name">Lukas R&ouml;seler</div>
-          <div class="editor-role">Editor-in-Chief</div>
-          <div class="editor-affiliation">University of M&uuml;nster</div>
+      <div class="pp-grid">
+        <div>
+          <h2>Editorial Team</h2>
+          <div class="editors-list">
+            <div class="editor-item">
+              <div class="editor-avatar">LR</div>
+              <div class="editor-info">
+                <div class="editor-name">Lukas R&ouml;seler</div>
+                <div class="editor-role">Editor-in-Chief</div>
+                <div class="editor-affiliation">University of M&uuml;nster</div>
+              </div>
+            </div>
+            <div class="editor-item">
+              <div class="editor-avatar">LW</div>
+              <div class="editor-info">
+                <div class="editor-name">Lukas Wallrich</div>
+                <div class="editor-role">Editor</div>
+                <div class="editor-affiliation">Birkbeck, University of London</div>
+              </div>
+            </div>
+            <div class="editor-item">
+              <div class="editor-avatar">FA</div>
+              <div class="editor-info">
+                <div class="editor-name">Flavio Azevedo</div>
+                <div class="editor-role">Editor</div>
+                <div class="editor-affiliation">University of Utrecht</div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="editor-card">
-          <div class="editor-avatar">LW</div>
-          <div class="editor-name">Lukas Wallrich</div>
-          <div class="editor-role">Editor</div>
-          <div class="editor-affiliation">Birkbeck, University of London</div>
+        <div>
+          <h2>Partners</h2>
+          <div class="partners-list">
+            <span class="partner-badge">PCI</span>
+            <span class="partner-badge">MetaROR</span>
+            <span class="partner-badge">TROLLing</span>
+            <span class="partner-badge">JCRe</span>
+          </div>
         </div>
-
-        <div class="editor-card">
-          <div class="editor-avatar">FA</div>
-          <div class="editor-name">Flavio Azevedo</div>
-          <div class="editor-role">Editor</div>
-          <div class="editor-affiliation">University of Utrecht</div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ================================
-       8. Footer
-       ================================ -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p><strong>Replication Research (R&sup2;)</strong></p>
-      <p>ISSN 3052-5977 &middot; University of M&uuml;nster</p>
-      <p>M&uuml;COS &amp; FORRT</p>
-      <p class="footer-cc">Licensed under CC BY 4.0</p>
+      <div class="footer-inner">
+        <div class="footer-brand">R<sup>2</sup> Replication Research</div>
+        <div class="footer-info">
+          <div>ISSN 3052-5977 &middot; University of M&uuml;nster</div>
+          <div>M&uuml;COS &amp; FORRT</div>
+        </div>
+        <div class="footer-cc">CC BY 4.0</div>
+      </div>
     </div>
   </footer>
 
-  <!-- Mockup Navigation Toggle -->
+  <!-- Mockup Toggle -->
   <div class="mockup-toggle">
     <a href="mockup1-clean-academic.html">1</a>
     <a href="mockup2-modern-cards.html" class="active">2</a>
